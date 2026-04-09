@@ -16,26 +16,33 @@ function Results({ userInput }: { userInput: UserInputData }) {
         </tr>
       </thead>
       <tbody>
-        {results.map((eachYearData) => (
-          <tr>
-            <td>{eachYearData.year}</td>
-            <td>{formatter.format(eachYearData.valueEndOfYear)}</td>
-            <td>{formatter.format(eachYearData.interest)}</td>
-            <td>
-              {formatter.format(
-                eachYearData.valueEndOfYear -
-                  (eachYearData.year * eachYearData.annualInvestment +
-                    userInput.initialInvestment),
-              )}
-            </td>
-            <td>
-              {formatter.format(
-                userInput.initialInvestment +
-                  eachYearData.year * userInput.annualInvestment,
-              )}
-            </td>
-          </tr>
-        ))}
+        {results.map((eachYearData) => {
+          const initialInvestment =
+            results[0].valueEndOfYear -
+            results[0].annualInvestment -
+            results[0].interest;
+
+          return (
+            <tr>
+              <td>{eachYearData.year}</td>
+              <td>{formatter.format(eachYearData.valueEndOfYear)}</td>
+              <td>{formatter.format(eachYearData.interest)}</td>
+              <td>
+                {formatter.format(
+                  eachYearData.valueEndOfYear -
+                    (eachYearData.year * eachYearData.annualInvestment +
+                      initialInvestment),
+                )}
+              </td>
+              <td>
+                {formatter.format(
+                  initialInvestment +
+                    eachYearData.year * eachYearData.annualInvestment,
+                )}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
