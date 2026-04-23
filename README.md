@@ -2,6 +2,12 @@
 
 A modern web application for calculating investment growth over time. Built with React, TypeScript, and Vite.
 
+## 🚀 Live Demo
+
+**[View Live Demo](https://investment-calculator-six-lovat.vercel.app/)**
+
+![Investment Calculator Screenshot](docs/images/screenshot.png)
+
 ## Features
 
 - **Dynamic Investment Calculations**: Input your initial investment, annual contributions, expected return rate, and investment duration
